@@ -134,6 +134,8 @@ class QueryParser {
             indexGreaterThan();
         else if (tq.matchChomp(":eq("))
             indexEquals();
+        else if (tq.matchChomp(":last"))
+            last();
         else if (tq.matches(":has("))
             has();
         else if (tq.matches(":contains("))
@@ -223,6 +225,10 @@ class QueryParser {
 
     private void indexEquals() {
         evals.add(new Evaluator.IndexEquals(consumeIndex()));
+    }
+
+    private void last() {
+        evals.add(new Evaluator.Last());
     }
 
     private int consumeIndex() {

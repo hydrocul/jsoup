@@ -585,4 +585,12 @@ public class SelectorTest {
         assertEquals(1, el1.size());
         assertEquals("1", el1.first().id());
     }
+
+    @Test public void last() {
+        Document doc = Jsoup.parse("<div>One<p>Two</p><p>Three</p>Four</div>");
+
+        Elements el1 = doc.select("p:last");
+        assertEquals(1, el1.size());
+        assertEquals("Three", el1.first().text());
+    }
 }

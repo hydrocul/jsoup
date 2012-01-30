@@ -366,6 +366,23 @@ public abstract class Evaluator {
         }
     }
 
+    public static final class Last extends Evaluator {
+        public Last() {
+        }
+
+        @Override
+        public boolean matches(Element root, Element element) {
+            Element last = element.lastElementSibling();
+            return last == null || last == element;
+        }
+
+        @Override
+        public String toString() {
+            return ":last";
+        }
+
+    }
+
     /**
      * Evaluator for matching Element (and its descendents) text
      */
